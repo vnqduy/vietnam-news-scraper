@@ -1,0 +1,10 @@
+feedparser>=6.0.10
+pandas>=2.0.0
+newspaper3k>=0.2.8
+googlenewsdecoder>=0.1.0
+cloudscraper>=1.2.71
+beautifulsoup4>=4.12.0
+selenium>=4.18.0
+webdriver-manager>=4.0.0
+pyyaml>=6.0.1
+tqdm>=4.66.0
