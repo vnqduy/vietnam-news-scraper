@@ -1,0 +1,42 @@
+search:
+  start_date: "2017-01-01"
+  end_date: "2017-12-31"
+  chunk_days: 31
+  tech_keywords:
+    - '"trí tuệ nhân tạo"'
+    - "ChatGPT"
+    - "OpenAI"
+    - '"AI tạo sinh"'
+    - "EdTech"
+  edu_keywords:
+    - "giáo dục"
+    - "đào tạo"
+    - "trường học"
+    - "đại học"
+    - "học sinh"
+    - "sinh viên"
+
+outlets:
+  "thanhnien.vn": ["Báo Thanh Niên", "Thanh Niên", "thanhnien.vn"]
+  "nhandan.vn": ["Báo Nhân Dân điện tử", "Nhân Dân", "nhandan.vn", "Báo Nhân Dân"]
+  "laodong.vn": ["Laodong.vn", "Báo Lao Động", "Lao Động"]
+  "vov.vn": ["VOV", "vov.vn", "Báo điện tử VOV", "VOV2.VN"]
+  "giaoducthoidai.vn": ["Giáo dục & Thời đại", "Báo Giáo dục và Thời đại", "GD&TĐ"]
+  "vnexpress.net": ["VnExpress"]
+  "dantri.com.vn": ["Báo Dân trí", "Dân trí"]
+  "vietnamnet.vn": ["Báo VietNamNet", "VietNamNet"]
+  "tuoitre.vn": ["Tuổi Trẻ", "Báo Tuổi Trẻ"]
+  "24h.com.vn": ["24h.com.vn", "24H"]
+  "kenh14.vn": ["Kenh14.vn", "Kênh 14"]
+  "znews.vn": ["ZNews", "Zing News", "znews.vn", "ZNews.vn"]
+  "giaoduc.net.vn": ["Giáo dục Việt Nam", "giaoduc.net.vn", "Báo điện tử Giáo dục Việt Nam"]
+  "vtv.vn": ["VTV.vn", "VTV", "Báo điện tử VTV"]
+  "baochinhphu.vn": ["Báo Chính phủ", "baochinhphu.vn", "Cổng Thông tin điện tử Chính phủ"]
+  "vtcnews.vn": ["Báo điện tử VTC News", "VTC News", "vtcnews.vn"]
+  "qdnd.vn": ["qdnd.vn", "Báo Quân đội nhân dân", "Quân đội nhân dân"]
+  "vietnamplus.vn": ["VietnamPlus", "Vietnam+ (VietnamPlus)", "vietnamplus.vn"]
+
+paths:
+  raw_output: "data/raw_rss.csv"
+  decoded_output: "data/decoded_links.csv"
+  final_output: "data/aied_news_final.csv"
