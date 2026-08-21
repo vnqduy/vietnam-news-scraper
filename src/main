@@ -1,0 +1,45 @@
+import os
+import pandas as pd
+from src.utils import load_config
+from src.crawler import RSSCrawler
+from src.decoder import decode_rss_urls
+from src.parser import ArticleScraper
+
+def main():
+    config = load_config()
+    os.makedirs("data", exist_ok=True)
+
+    # 1. Crawl RSS feeds
+    print("--- Stage 1: Crawling RSS Feeds ---")
+    crawler = RSSCrawler(config)
+    raw_df = crawler.run()
+    raw_df.to_csv(config["paths"]["raw_output"], index=False, encoding="utf-8-sig")
+
+    # 2. Decode Google News links
+    print("\n--- Stage 2: Decoding Redirect URLs ---")
+    decoded_df = decode_rss_urls(raw_df)
+    decoded_df.dropna(subset=["real_url"], inplace=True)
+    decoded_df.to_csv(config["paths"]["decoded_output"], index=False, encoding="utf-8-sig")
+
+    # 3. Hybrid Scraping
+    print("\n--- Stage 3: Extracting Full Text ---")
+    scraper = ArticleScraper()
+    try:
+        full_texts = []
+        char_counts = []
+        for _, row in decoded_df.iterrows():
+            text = scraper.scrape_url(row["real_url"], row["outlet_domain"])
+            full_texts.append(text if text else "")
+            char_counts.append(len(text) if text else 0)
+
+        decoded_df["full_text"] = full_texts
+        decoded_df["char_count"] = char_counts
+    finally:
+        scraper.close()
+
+    # Save output
+    decoded_df.to_csv(config["paths"]["final_output"], index=False, encoding="utf-8-sig")
+    print(f"\nPipeline complete! Results saved to: {config['paths']['final_output']}")
+
+if __name__ == "__main__":
+    main()
