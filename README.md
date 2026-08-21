@@ -1,13 +1,22 @@
-## Contributing
+# Vietnam News Scraper
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add someTo navigate back to your main repository page from a file or subfolder on GitHub, use these shortcuts:
+A modular, robust Python scraping framework designed to collect, decode, and extract full-text news articles from major Vietnamese media outlets (e.g., *Dân Trí*, *Lao Động*, *VOV*, *VTV*, *Thanh Niên*).
 
-* **Repository Breadcrumbs:** At the top of the file view, click your repository's name in the path (e.g., `username / repository-name`).
-* **Code Tab:** Click the **`< > Code`** tab at the top-left of the page below the repository title.
-* **Browser Navigation:** Press `Alt + Left Arrow` (Windows/Linux) or `Cmd + [`` (Mac) to go back.
+Built to handle anti-bot protection, dynamic JavaScript rendering, and Google News RSS obfuscation using a multi-engine fallback architecture (**Requests** → **Cloudscraper** → **Headless Selenium**).
 
-**Quick Keyboard Shortcuts**
-* Press `g` then `c` to jump directly to the **Code** tab (repository root).
-* Press `t` from any page in the repository to open the file finder, then type `README.md` to jump straight to it.
+---
+
+## 🏗️ Project Architecture
+
+```text
+vietnam-news-scraper/
+├── README.md
+├── requirements.txt
+├── config.yaml
+├── main.py
+└── src/
+    ├── __init__.py
+    ├── crawler.py     # Searches & fetches Google News RSS feeds
+    ├── decoder.py     # Decodes Google News RSS redirect links to real URLs
+    ├── parser.py      # Multi-engine article body parser (JSON-LD, DOM, Selenium)
+    └── utils.py       # Config loader & date parsing helpers
